@@ -9,6 +9,7 @@ public class UnityChanController : MonoBehaviour
     private float velocityZ = 16f;
 
     private float velocityX = 10f;
+    private float velocityY = 10f;
     private float movableRange = 3.4f;
 
 
@@ -28,6 +29,7 @@ public class UnityChanController : MonoBehaviour
     void Update()
     {
         float inputVelocityX = 0;
+        float inputVelocityY = 0;
 
         //Unityちゃんを左右のキーコードが押されていればそれに応じて移動させる
         if(Input.GetKey(KeyCode.LeftArrow) && -this.movableRange < this.transform.position.x)
@@ -39,8 +41,26 @@ public class UnityChanController : MonoBehaviour
             inputVelocityX = this.velocityX;
         }
 
-        //x軸、z軸の移動
-        this.myRigidbody.velocity = new Vector3(inputVelocityX, 0, this.velocityZ);
+        //ジャンプしていないときにスペースキーを押したらジャンプする
+        if (Input.GetKeyDown(KeyCode.Space) && this.transform.position.y < 0.5f)
+        {
+            this.myAnimator.SetBool("Jump", true);
+            inputVelocityY = this.velocityY;
+        }
+        else
+        {
+            //現在のY軸の速度を代入
+            inputVelocityY = this.myRigidbody.velocity.y;
+        }
+
+        //ジャンプ中はJumpにFalse
+        if(this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
+        {
+            this.myAnimator.SetBool("Jump", false);
+        }
+
+        //x軸、y軸、z軸の移動
+        this.myRigidbody.velocity = new Vector3(inputVelocityX, inputVelocityY, this.velocityZ);
 
     }
 }
