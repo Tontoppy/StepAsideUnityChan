@@ -23,6 +23,12 @@ public class UnityChanController : MonoBehaviour
     private GameObject scoreText;
     //スコア
     private int score = 0;
+    //左ボタン押下の判定
+    private bool isLButtonDown = false;
+    //右ボタン押下の判定
+    private bool isRButtonDown = false;
+    //ジャンプボタン押下の判定
+    private bool isJButtonDown = false;
 
 
 
@@ -60,18 +66,18 @@ public class UnityChanController : MonoBehaviour
         float inputVelocityX = 0;
         float inputVelocityY = 0;
 
-        //Unityちゃんを左右のキーコードが押されていればそれに応じて移動させる
-        if(Input.GetKey(KeyCode.LeftArrow) && -this.movableRange < this.transform.position.x)
+        //Unityちゃんを左右のキーコード,ボタンが押されていればそれに応じて移動させる
+        if((Input.GetKey(KeyCode.LeftArrow) || this.isLButtonDown) && -this.movableRange < this.transform.position.x)
         {
             inputVelocityX = -this.velocityX;
         }
-        else if(Input.GetKey(KeyCode.RightArrow)&& this.movableRange > this.transform.position.x)
+        else if((Input.GetKey(KeyCode.RightArrow) || this.isRButtonDown)&& this.movableRange > this.transform.position.x)
         {
             inputVelocityX = this.velocityX;
         }
 
-        //ジャンプしていないときにスペースキーを押したらジャンプする
-        if (Input.GetKeyDown(KeyCode.Space) && this.transform.position.y < 0.5f)
+        //ジャンプしていないときにスペースキー,ボタンを押したらジャンプする
+        if ((Input.GetKeyDown(KeyCode.Space) || this.isJButtonDown) && this.transform.position.y < 0.5f)
         {
             this.myAnimator.SetBool("Jump", true);
             inputVelocityY = this.velocityY;
@@ -131,5 +137,39 @@ public class UnityChanController : MonoBehaviour
             //接触したコインのオブジェクトを破棄
             Destroy(other.gameObject);
         }
+    }
+
+    //ジャンプボタンを押した場合の処理
+    public void GetMyJumpButtonDown()
+    {
+        this.isJButtonDown = true;
+
+    }
+    //ジャンプボタンを離した場合の処理
+    public void GetMyJumpButtonUp()
+    {
+        this.isJButtonDown = false;
+
+    }
+
+    //左ボタン処理
+    public void GetMyLeftButtonDown()
+    {
+        this.isLButtonDown = true;
+
+    }
+    public void GetMyLeftButtonUp()
+    {
+        this.isLButtonDown = false;
+    }
+
+    //右ボタン処理
+    public void GetMyRightButtonDown()
+    {
+        this.isRButtonDown = true;
+    }
+    public void GetMyRightButtonUp()
+    {
+        this.isRButtonDown = false;
     }
 }
