@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,21 +13,21 @@ public class UnityChanController : MonoBehaviour
     private float velocityX = 10f;
     private float velocityY = 10f;
     private float movableRange = 3.4f;
-    //“®‚«‚ğŒ¸‘¬‚³‚¹‚é’è”
+    //å‹•ãã‚’æ¸›é€Ÿã•ã›ã‚‹å®šæ•°
     private float coefficient = 0.99f;
-    //ƒQ[ƒ€I—¹‚Ì”»’èG
+    //ã‚²ãƒ¼ãƒ çµ‚äº†ã®åˆ¤å®šï¼›
     private bool isEnd = false;
-    //ƒQ[ƒ€I—¹‚É•\¦‚·‚éƒeƒLƒXƒg
+    //ã‚²ãƒ¼ãƒ çµ‚äº†æ™‚ã«è¡¨ç¤ºã™ã‚‹ãƒ†ã‚­ã‚¹ãƒˆ
     private GameObject stateText;
-    //ƒXƒRƒA‚ğ•\¦‚·‚éƒeƒLƒXƒg
+    //ã‚¹ã‚³ã‚¢ã‚’è¡¨ç¤ºã™ã‚‹ãƒ†ã‚­ã‚¹ãƒˆ
     private GameObject scoreText;
-    //ƒXƒRƒA
+    //ã‚¹ã‚³ã‚¢
     private int score = 0;
-    //¶ƒ{ƒ^ƒ“‰Ÿ‰º‚Ì”»’è
+    //å·¦ãƒœã‚¿ãƒ³æŠ¼ä¸‹ã®åˆ¤å®š
     private bool isLButtonDown = false;
-    //‰Eƒ{ƒ^ƒ“‰Ÿ‰º‚Ì”»’è
+    //å³ãƒœã‚¿ãƒ³æŠ¼ä¸‹ã®åˆ¤å®š
     private bool isRButtonDown = false;
-    //ƒWƒƒƒ“ƒvƒ{ƒ^ƒ“‰Ÿ‰º‚Ì”»’è
+    //ã‚¸ãƒ£ãƒ³ãƒ—ãƒœã‚¿ãƒ³æŠ¼ä¸‹ã®åˆ¤å®š
     private bool isJButtonDown = false;
 
 
@@ -53,7 +53,7 @@ public class UnityChanController : MonoBehaviour
     void Update()
     {
 
-        //ƒQ[ƒ€I—¹‚È‚çUnity‚¿‚á‚ñ‚ğ~‚ß‚é
+        //ã‚²ãƒ¼ãƒ çµ‚äº†ãªã‚‰Unityã¡ã‚ƒã‚“ã‚’æ­¢ã‚ã‚‹
         if (this.isEnd)
         {
             this.velocityX *= this.coefficient;
@@ -66,7 +66,7 @@ public class UnityChanController : MonoBehaviour
         float inputVelocityX = 0;
         float inputVelocityY = 0;
 
-        //Unity‚¿‚á‚ñ‚ğ¶‰E‚ÌƒL[ƒR[ƒh,ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚Ä‚¢‚ê‚Î‚»‚ê‚É‰‚¶‚ÄˆÚ“®‚³‚¹‚é
+        //Unityã¡ã‚ƒã‚“ã‚’å·¦å³ã®ã‚­ãƒ¼ã‚³ãƒ¼ãƒ‰,ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚Œã¦ã„ã‚Œã°ãã‚Œã«å¿œã˜ã¦ç§»å‹•ã•ã›ã‚‹
         if((Input.GetKey(KeyCode.LeftArrow) || this.isLButtonDown) && -this.movableRange < this.transform.position.x)
         {
             inputVelocityX = -this.velocityX;
@@ -76,7 +76,7 @@ public class UnityChanController : MonoBehaviour
             inputVelocityX = this.velocityX;
         }
 
-        //ƒWƒƒƒ“ƒv‚µ‚Ä‚¢‚È‚¢‚Æ‚«‚ÉƒXƒy[ƒXƒL[,ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚çƒWƒƒƒ“ƒv‚·‚é
+        //ã‚¸ãƒ£ãƒ³ãƒ—ã—ã¦ã„ãªã„ã¨ãã«ã‚¹ãƒšãƒ¼ã‚¹ã‚­ãƒ¼,ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ãŸã‚‰ã‚¸ãƒ£ãƒ³ãƒ—ã™ã‚‹
         if ((Input.GetKeyDown(KeyCode.Space) || this.isJButtonDown) && this.transform.position.y < 0.5f)
         {
             this.myAnimator.SetBool("Jump", true);
@@ -84,35 +84,35 @@ public class UnityChanController : MonoBehaviour
         }
         else
         {
-            //Œ»İ‚ÌY²‚Ì‘¬“x‚ğ‘ã“ü
+            //ç¾åœ¨ã®Yè»¸ã®é€Ÿåº¦ã‚’ä»£å…¥
             inputVelocityY = this.myRigidbody.velocity.y;
         }
 
-        //ƒWƒƒƒ“ƒv’†‚ÍJump‚ÉFalse
+        //ã‚¸ãƒ£ãƒ³ãƒ—ä¸­ã¯Jumpã«False
         if(this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
         {
             this.myAnimator.SetBool("Jump", false);
         }
 
-        //x²Ay²Az²‚ÌˆÚ“®
+        //xè»¸ã€yè»¸ã€zè»¸ã®ç§»å‹•
         this.myRigidbody.velocity = new Vector3(inputVelocityX, inputVelocityY, this.velocityZ);
 
     }
 
-    //ƒgƒŠƒK[ƒ‚[ƒh‚Å‚Ù‚©‚ÌƒIƒuƒWƒFƒNƒg‚ÆÚG‚µ‚½ê‡‚Ìˆ—GG
+    //ãƒˆãƒªã‚¬ãƒ¼ãƒ¢ãƒ¼ãƒ‰ã§ã»ã‹ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨æ¥è§¦ã—ãŸå ´åˆã®å‡¦ç†ï¼›ï¼›
     private void OnTriggerEnter(Collider other)
     {
-        //áŠQ•¨‚ÉÕ“Ë‚µ‚½ê‡
+        //éšœå®³ç‰©ã«è¡çªã—ãŸå ´åˆ
         if (other.gameObject.tag == TagName.CarTag || other.gameObject.tag == TagName.TrafficConeTag)
         {
             this.isEnd = true;
-            //stateText‚ÉGAME OVER‚ğ•\¦
+            //stateTextã«GAME OVERã‚’è¡¨ç¤º
             this.stateText.GetComponent<Text>().text = "GAME OVER";
 
 
         }
 
-        //ƒS[ƒ‹’n“_‚É“’B‚µ‚½ê‡
+        //ã‚´ãƒ¼ãƒ«åœ°ç‚¹ã«åˆ°é”ã—ãŸå ´åˆ
         if (other.gameObject.tag == TagName.GoalTag)
         {
             this.isEnd = true;
@@ -120,39 +120,39 @@ public class UnityChanController : MonoBehaviour
 
         }
 
-        //ƒRƒCƒ“‚ÉÕ“Ë‚µ‚½ê‡
+        //ã‚³ã‚¤ãƒ³ã«è¡çªã—ãŸå ´åˆ
         if (other.gameObject.tag == TagName.CoinTag)
         {
-            //ƒXƒRƒA‚ğ‰ÁZGG
+            //ã‚¹ã‚³ã‚¢ã‚’åŠ ç®—ï¼›ï¼›
             this.score += 10;
             ;
-            //“¾“_•\¦
+            //å¾—ç‚¹è¡¨ç¤º
             this.scoreText.GetComponent<Text>().text = "Score" + this.score + "pt";
 
 
 
-            //ƒp[ƒeƒBƒNƒ‹‚ğÄ¶
+            //ãƒ‘ãƒ¼ãƒ†ã‚£ã‚¯ãƒ«ã‚’å†ç”Ÿ
             GetComponent<ParticleSystem>().Play();
 
-            //ÚG‚µ‚½ƒRƒCƒ“‚ÌƒIƒuƒWƒFƒNƒg‚ğ”jŠü
+            //æ¥è§¦ã—ãŸã‚³ã‚¤ãƒ³ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç ´æ£„
             Destroy(other.gameObject);
         }
     }
 
-    //ƒWƒƒƒ“ƒvƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½ê‡‚Ìˆ—
+    //ã‚¸ãƒ£ãƒ³ãƒ—ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ãŸå ´åˆã®å‡¦ç†
     public void GetMyJumpButtonDown()
     {
         this.isJButtonDown = true;
 
     }
-    //ƒWƒƒƒ“ƒvƒ{ƒ^ƒ“‚ğ—£‚µ‚½ê‡‚Ìˆ—
+    //ã‚¸ãƒ£ãƒ³ãƒ—ãƒœã‚¿ãƒ³ã‚’é›¢ã—ãŸå ´åˆã®å‡¦ç†
     public void GetMyJumpButtonUp()
     {
         this.isJButtonDown = false;
 
     }
 
-    //¶ƒ{ƒ^ƒ“ˆ—
+    //å·¦ãƒœã‚¿ãƒ³å‡¦ç†
     public void GetMyLeftButtonDown()
     {
         this.isLButtonDown = true;
@@ -163,7 +163,7 @@ public class UnityChanController : MonoBehaviour
         this.isLButtonDown = false;
     }
 
-    //‰Eƒ{ƒ^ƒ“ˆ—
+    //å³ãƒœã‚¿ãƒ³å‡¦ç†
     public void GetMyRightButtonDown()
     {
         this.isRButtonDown = true;

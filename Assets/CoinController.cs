@@ -1,15 +1,15 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CoinController : MonoBehaviour
 {
-    //Unity‚¿‚á‚ñ‚Ìtransform
+    //Unityã¡ã‚ƒã‚“ã®transform
     private Transform unitychanTransform;
-    //‚±‚ÌƒIƒuƒWƒFƒNƒg‚Ìtransform
+    //ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®transform
     private Transform myTransform;
 
-    //Unity‚¿‚á‚ñ‚Æ‚Ì‹——£ŒÀŠEi‚±‚êˆÈãUnity‚¿‚á‚ñ‚ÌŒã‚ë‚És‚­‚ÆƒIƒuƒWƒFƒNƒg‚ğ”j‰ój
+    //Unityã¡ã‚ƒã‚“ã¨ã®è·é›¢é™ç•Œï¼ˆã“ã‚Œä»¥ä¸ŠUnityã¡ã‚ƒã‚“ã®å¾Œã‚ã«è¡Œãã¨ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç ´å£Šï¼‰
     private int limitDistanse = 6;
     // Start is called before the first frame update
     void Start()
